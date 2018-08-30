@@ -23,7 +23,7 @@ const app = express()
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/', (req, res)=>{ res.json(database.users) })
+app.get('/', (req, res)=>{ res.json("Olayinka Raheem says 'Welcome!'") })
 
 app.post('/signup', register.handleRegister(db, bcrypt))
 
@@ -47,6 +47,7 @@ bcrypt.compare("veggies", hash, function(err, res) {
     // res = false
 });
 */
-app.listen('3001', ()=> {
-    console.log('App running on port 3001')
+const PORT = process.env.PORT || 3001
+app.listen(PORT, ()=> {
+    console.log(`App running on port ${PORT}`)
 })
