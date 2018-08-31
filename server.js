@@ -11,10 +11,8 @@ const profile = require('./controllers/profile')
 const db = knex({
     client: 'pg',
     connection: {
-        host : '127.0.0.1',
-        user : 'postgres',
-        password : 'police',
-        database : 'facedetectionapp'
+        connectionString : precess.env.DATABSE_URL,
+        ssl: true,
     }
 })
 
@@ -23,7 +21,7 @@ const app = express()
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/', (req, res)=>{ res.json("Olayinka Raheem says 'Welcome!'") })
+app.get('/', (req, res)=>{ res.json("Olayinka Raheem says Welcome!") })
 
 app.post('/signup', register.handleRegister(db, bcrypt))
 
